@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @resume.to_s %>
+</h1>
+
+<div id="my-container">
+
+</div>
+
+<%= link_to 'Edit', edit_resume_path(@resume) %> |
+<%= link_to 'Back', resumes_path %>
+
+<script>
+  PDFObject.embed("file://<%= @resume.uri %>", "#my-container");
+</script>

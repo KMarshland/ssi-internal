@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
+  def resumes
+    Resume.where(user_id: self.id)
+  end
+
   def self.from_omniauth(auth)
     puts auth.inspect.green
     puts auth.provider

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+  post 'resumes/upload'
+  resources :resumes
+
   root 'static#home'
 
   get 'users/current'
   put 'users/:id/role' => 'users#role'
-  get 'permissions' => 'users#no_permissions'
+  get 'permissions' => 'users#no_permissions', as: :permissions
   resources :users
   get 'signin' => 'sessions#signin'
   get 'auth/:provider/callback', to: 'sessions#create'

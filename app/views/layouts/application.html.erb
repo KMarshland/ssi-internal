@@ -28,7 +28,7 @@
       <div class="menu">
         <ul>
           <%= menu_item 'Home', '/' %>
-          <%= menu_item 'Resumes', '/resumes' %>
+          <%= menu_item 'Resumes', resumes_path %>
           <%= menu_item 'Forms', '/forms' %>
           <% if is_logged_in? %>
               <%= menu_item 'Sign out', '/signout' %>

@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def signin
-    puts ENV['GOOGLE_PUBLIC']
-    puts ENV['GOOGLE_SECRET']
+    redirect_to '/' if is_logged_in?
+
     if params[:clear] == 'yes'
       session[:return_url] = '/'
     end
@@ -23,9 +23,8 @@ class SessionsController < ApplicationController
     redirect_url = session[:return_url] || '/'
     session[:return_url] = '/'
     if redirect_url.blank? || redirect_url.split('#')[0] == '/' || redirect_url.split('#')[0].blank?
-      render 'destroy_window'
+      redirect_to '/'
     else
-      puts redirect_url.inspect.red
       redirect_to redirect_url, notice: "Signed in!"
     end
   end
