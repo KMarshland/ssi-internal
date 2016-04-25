@@ -17,6 +17,7 @@ gem 'therubyracer'
 #gzip assets
 gem 'heroku-deflater'
 gem 'rails_12factor', group: :production
+gem 'pg'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
