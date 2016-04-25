@@ -30,6 +30,14 @@
           <%= menu_item 'Home', '/' %>
           <%= menu_item 'Resumes', '/resumes' %>
           <%= menu_item 'Forms', '/forms' %>
+          <% if is_logged_in? %>
+              <%= menu_item 'Sign out', '/signout' %>
+              <% if is_super_admin? %>
+                  <%= menu_item 'Admin', users_path %>
+              <% end %>
+          <% else %>
+              <%= menu_item 'Sign in', '/signin' %>
+          <% end %>
         </ul>
       </div>
     </div><!-- site-nav -->

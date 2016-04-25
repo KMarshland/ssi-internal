@@ -6,9 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def signin
+    puts ENV['GOOGLE_PUBLIC']
+    puts ENV['GOOGLE_SECRET']
     if params[:clear] == 'yes'
       session[:return_url] = '/'
     end
+    redirect_to '/auth/google_oauth2'
   end
 
   def create
