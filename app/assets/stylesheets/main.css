@@ -1,0 +1,89 @@
+/*
+Some css adapted from http://gracethemes.com/themes/bizgrowth-lite/
+
+Version: 1.6
+License: GNU General Public License
+License URI: license.txt
+
+BizGrowth WordPress Theme has been created by Grace Themes(gracethemes.com), 2016.
+BizGrowth WordPress Theme is released under the terms of GNU GPL
+*/
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,400italic,700);
+body{ margin:0; padding:0;line-height:20px; font-size:13px; color:#5c5c5c; font-family:'PT Sans', Helvetica, sans-serif;}
+*{ margin:0; padding:0; outline:none;}
+img{ border:none; margin:0; padding:0; height:auto}
+.wp-caption, .wp-caption-text, .sticky, .gallery-caption, .aligncenter{ margin:0; padding:0;}
+p{ margin:0; padding:0;}
+a{ text-decoration:none; color:#FF6D84;}
+a:hover{ color:#333;}
+ol,ul{ margin:0; padding:0;}
+ul li ul, ul li ul li ul, ol li ol, ol li ol li ol{ margin-left:10px;}
+h1,h2,h3,h4,h5,h6{ color:#484f5e; font-family:'Roboto Condensed', sans-serif; margin:0 0 20px; padding:0; line-height:1.1; font-weight:400; }
+h1{ font-size:36px;}
+h2{ font-size:30px;}
+h3{ font-size:24px;}
+h4{ font-size:20px;}
+h5{ font-size:18px;}
+h6{ font-size:14px;}
+.clear{ clear:both;}
+.alignnone{ width:100% !important;}
+img.alignleft, .alignleft{ float:left; margin:0 15px 0 0; padding:5px; border:1px solid #cccccc;}
+img.alignright, .alignright{ float:right; margin:0 0 0 15px; padding:5px; border:1px solid #cccccc;}
+.left{ float:left;}
+.right{ float:right;}
+.space50{ clear:both; height:50px;}
+.space100{ clear:both; height:100px;}
+.pagination{display:table; clear:both;}
+.pagination ul{list-style:none; margin:20px 0;}
+.pagination ul li{display:inline; float:left; margin-right:5px;}
+.pagination ul li span, .pagination ul li a{background:#646262; color:#fff; padding:5px 10px; display:inline-block;}
+.pagination ul li .current, .pagination ul li a:hover{background:#f66654;}
+
+#comment-nav-above .nav-previous, #comment-nav-below .nav-previous{ float:none !important; margin:10px 0;}
+ol.comment-list li{ list-style:none; margin-bottom:5px;}
+
+.logo{float:left; z-index:999; padding:12px 0;  color:#333;}
+.logo h1{font-weight:400; margin:0; line-height:36px; color:#fff;}
+.logo a{ color:#fff;}
+.logo span{ color:#fff; display:block;}
+.container{ width:1100px; margin:0 auto; position:relative;}
+
+
+/*header menu css*/
+.toggle{display: block;}
+.toggle a{width:100%; color:#ffffff; background: #3e3e3e; padding:10px 10px; margin-top:5px; font-size:16px;}
+.toggle a:hover{color:#ffffff !important;}
+.sitenav{display:none;}
+.headerinner, .blog .header{ position:relative !important}
+.header{width:100%; z-index:999999; top:auto; background-color:rgba(0, 0, 0, 0.8); box-shadow:0 2px 2px #000; position:absolute; }
+.sitenav{ padding:0; text-align:right; float:right;}
+.sitenav ul { float:right; margin:0; padding:0; font-family:'Roboto Condensed', sans-serif; font-weight:400; font-size:15px;}
+.sitenav ul li{ display:inline-block; margin:0; position:relative; text-align:center;}
+.sitenav ul li a{ padding:30px 13px; display:block; color:#fff; border-bottom:1px solid transparent; }
+.sitenav ul li ul li{display:block; position:relative; float:none; top:-1px; }
+.sitenav ul li ul li a{display:block; padding-top:10px; padding-bottom:10px; position:relative; top:1px; text-align:left; border-bottom:1px solid #333;  }
+.sitenav ul li a:hover, .sitenav ul li.current_page_item a{ color:#FF6D84; border-bottom:1px solid #FF6D84; }
+
+.sitenav ul li ul{display:none; z-index:9999999; position:relative;}
+.sitenav ul li:hover > ul{display:block; width:200px; position:absolute; left:0; text-align:left; background-color: rgba(0, 0, 0, 0.8);  box-shadow:0 2px 2px #000; }
+.sitenav ul li:hover ul li ul{display:none; position:relative;}
+.sitenav ul li:hover ul li:hover > ul{display:block; position:absolute; left:200px; top:1px;}
+
+
+section#home_slider{ padding:0; }
+#FrontBlogPost, #wrapfirst, #wrapsecond{ padding:70px 0;  border-top:1px solid #E1E1E1; box-shadow:0 1px 10px rgba(0, 0, 0, 0.1) inset}
+h2.section-title {color:#454545; font:300 36px/40px 'Roboto Condensed',san-serif; text-align: center; }
+
+.welcomecontent{ width:50%; float:left; text-align:right; margin:0 25px 0 0; }
+.welcomethumb{ width:45%; float:right; text-align:left;}
+
+.UnderLine{ width:50%; position:relative; display:inline-block; clear:both; margin:10px auto 30px; border-top:1px solid #E1E1E1;}
+.hr-inner{ position:absolute; margin-top:-1px; top:50%; height:1px; width:100%;}
+.hr-style { background-color:#FCFCFC; border-radius: 20px;  border-style: solid;  border-width:1px; display: block; height: 9px; left: auto; right:0; margin-left: -5px; margin-top: -5px; position: absolute;    width: 9px;}
+
+.site-main{ width:740px; margin:0; padding:0; float:left;}
+#sitefull{ width:100%; float:none;}
+#sitefull p{ margin-bottom:15px;}
+.page_content{ padding:25px 0;}
+.page_content p{ margin-bottom:20px; line-height:20px;}

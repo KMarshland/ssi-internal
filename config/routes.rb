@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'static#home'
+
   get 'users/current'
   put 'users/:id/role' => 'users#role'
   get 'permissions' => 'users#no_permissions'

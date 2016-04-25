@@ -29,9 +29,6 @@ class ApplicationController < ActionController::Base
   def requires_admin
     requires_that is_admin?
   end
-  def requires_student
-    requires_that is_student?
-  end
   def requires_logged_in
     requires_that is_logged_in?
   end

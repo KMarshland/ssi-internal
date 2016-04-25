@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Internal</title>
+  <title>Stanford Student Space Intiative Internal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="<%= asset_path 'favicon.png' %>">
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Condensed%3A400%2C300%2C400italic%2C700&amp;ver=4.6-alpha-37288" type="text/css" media="all">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<body class="home blog">
+<div class="header ">
+  <div class="container">
+    <div class="logo">
+      <h1>SSI Internal</h1>
+    </div><!-- logo -->
+
+    <div class="toggle">
+      <a class="toggleMenu" href="#" style="display: none;">Menu</a>
+    </div><!-- toggle -->
+
+    <div class="sitenav" style="display: block;">
+      <div class="menu">
+        <ul>
+          <%= menu_item 'Home', '/' %>
+          <%= menu_item 'Resumes', '/resumes' %>
+          <%= menu_item 'Forms', '/forms' %>
+        </ul>
+      </div>
+    </div><!-- site-nav -->
+    <div class="clear"></div>
+  </div><!-- container -->
+</div><!--.header -->
+
+
+<div class="container">
+  <div class="page_content">
+    <section class="site-main">
+      <%= yield %>
+    </section>
+  </div>
+</div>
 
 </body>
-</html>
