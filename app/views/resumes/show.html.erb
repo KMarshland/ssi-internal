@@ -4,13 +4,14 @@
   <%= @resume.to_s %>
 </h1>
 
-<div id="my-container">
-
-</div>
-
 <%= link_to 'Edit', edit_resume_path(@resume) %> |
 <%= link_to 'Back', resumes_path %>
 
+<br />
+<br />
+
+<div id="resume" style="height: 1000px;"></div>
+
 <script>
-  PDFObject.embed("file://<%= @resume.uri %>", "#my-container");
+  PDFObject.embed("/<%= @resume.uri %>", "#resume");
 </script>

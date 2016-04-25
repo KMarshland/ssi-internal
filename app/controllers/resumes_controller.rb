@@ -13,15 +13,15 @@ class ResumesController < ApplicationController
     return render json: {success: false, errors: 'Could not read file'} if uploaded_io.nil?
     return render json: {success: false, errors: 'Must be a pdf'} unless file.content_type == 'application/pdf'
 
-    path = Rails.root.join('..', 'uploads', 'internal', 'resumes', current_user.id.to_s)
+    path = Rails.root.join('public', 'uploads', 'internal', 'resumes', current_user.id.to_s)
     Dir.mkdir(path) unless Dir.exist?(path)
 
-    path = Rails.root.join('..', 'uploads', 'internal', 'resumes', current_user.id.to_s, "#{DateTime.now.strftime('%Y%m%d-%H%M%S')}_#{file.original_filename}")
+    path = Rails.root.join('public', 'uploads', 'internal', 'resumes', current_user.id.to_s, "#{DateTime.now.strftime('%Y%m%d-%H%M%S')}_#{file.original_filename}")
     File.open(path, 'wb') do |file|
       file.write(uploaded_io.read)
     end
 
-    render json: {success: true, uri: path.to_s}
+    render json: {success: true, uri: File.join('uploads', 'internal', 'resumes', current_user.id.to_s, "#{DateTime.now.strftime('%Y%m%d-%H%M%S')}_#{file.original_filename}").to_s}
   end
 
   # GET /resumes
