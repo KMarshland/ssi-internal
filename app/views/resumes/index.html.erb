@@ -19,6 +19,7 @@
             <td><%= link_to resume, resume %></td>
             <td><%= link_to 'Edit', edit_resume_path(resume) %></td>
             <td><%= link_to 'Remove', resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Download', "/#{resume.uri}", target: '_blank' %></td>
           </tr>
       <% end %>
       </tbody>

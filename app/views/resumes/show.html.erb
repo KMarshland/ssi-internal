@@ -5,6 +5,7 @@
 </h1>
 
 <%= link_to 'Edit', edit_resume_path(@resume) %> |
+<%= link_to 'Download', "/#{@resume.uri}", target: '_blank' %> |
 <%= link_to 'Back', resumes_path %>
 
 <br />
