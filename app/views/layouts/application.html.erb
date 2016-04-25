@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<body class="home blog">
+<body class="blog">
 <div class="header ">
   <div class="container">
     <div class="logo">
@@ -33,7 +33,7 @@
           <% if is_logged_in? %>
               <%= menu_item 'Sign out', '/signout' %>
               <% if is_super_admin? %>
-                  <%= menu_item 'Admin', users_path %>
+                  <%= menu_item 'Users', users_path %>
               <% end %>
           <% else %>
               <%= menu_item 'Sign in', '/signin' %>

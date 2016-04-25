@@ -10,7 +10,10 @@ BizGrowth WordPress Theme is released under the terms of GNU GPL
 */
 @import url(https://fonts.googleapis.com/css?family=PT+Sans);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,400italic,700);
-body{ margin:0; padding:0;line-height:20px; font-size:13px; color:#5c5c5c; font-family:'PT Sans', Helvetica, sans-serif;}
+body{
+    margin:0; padding:0;line-height:20px; font-size:13px; color:#5c5c5c; font-family:'PT Sans', Helvetica, sans-serif;
+    background-color: rgba(103,17,17,0.04);
+}
 *{ margin:0; padding:0; outline:none;}
 img{ border:none; margin:0; padding:0; height:auto}
 .wp-caption, .wp-caption-text, .sticky, .gallery-caption, .aligncenter{ margin:0; padding:0;}
