@@ -12,7 +12,7 @@ BizGrowth WordPress Theme is released under the terms of GNU GPL
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,400italic,700);
 body{
     margin:0; padding:0;line-height:20px; font-size:13px; color:#5c5c5c; font-family:'PT Sans', Helvetica, sans-serif;
-    background-color: rgba(103,17,17,0.04);
+    background-color: #F7F2F2;
 }
 *{ margin:0; padding:0; outline:none;}
 img{ border:none; margin:0; padding:0; height:auto}
@@ -85,7 +85,12 @@ h2.section-title {color:#454545; font:300 36px/40px 'Roboto Condensed',san-serif
 .hr-inner{ position:absolute; margin-top:-1px; top:50%; height:1px; width:100%;}
 .hr-style { background-color:#FCFCFC; border-radius: 20px;  border-style: solid;  border-width:1px; display: block; height: 9px; left: auto; right:0; margin-left: -5px; margin-top: -5px; position: absolute;    width: 9px;}
 
-.site-main{ width:740px; margin:0; padding:0; float:left;}
+.site-main{
+    width:100%;
+    margin:0;
+    padding:0;
+    float:left;
+}
 #sitefull{ width:100%; float:none;}
 #sitefull p{ margin-bottom:15px;}
 .page_content{ padding:25px 0;}
