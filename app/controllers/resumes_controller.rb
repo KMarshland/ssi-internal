@@ -28,6 +28,7 @@ class ResumesController < ApplicationController
   # GET /resumes.json
   def index
     @resumes = current_user.resumes
+    @primary = current_user.primary_resume
   end
 
   # GET /resumes/1

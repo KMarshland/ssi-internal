@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id               :integer          not null, primary key
-#  name             :string
-#  email            :string
-#  provider         :string
-#  oauth_token      :string
-#  oauth_expires_at :datetime
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  uid              :string
+#  id                :integer          not null, primary key
+#  name              :string
+#  email             :string
+#  provider          :string
+#  oauth_token       :string
+#  oauth_expires_at  :datetime
+#  uid               :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  primary_resume_id :integer
 #
 
 class User < ActiveRecord::Base
@@ -21,6 +22,22 @@ class User < ActiveRecord::Base
 
   def resumes
     Resume.where(user_id: self.id)
+  end
+
+  def primary_resume
+    if self.primary_resume_id.present?
+      existing = Resume.where(id: self.primary_resume_id).first
+      self.update(primary_resume_id: nil) if existing.nil?
+      return existing if existing.present?
+    end
+
+    unless self.resumes.blank?
+      new_resume = self.resumes.order('updated_at DESC').first
+      self.update(primary_resume_id: new_resume.id)
+      return new_resume
+    end
+
+    nil
   end
 
   def self.from_omniauth(auth)

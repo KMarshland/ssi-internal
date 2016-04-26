@@ -5,6 +5,10 @@
 <% else %>
     <h1>Listing Resumes</h1>
 
+    <% if @primary.present? %>
+        <h3>Primary Resume: <%= link_to @primary, @primary %></h3>
+    <% end %>
+
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
