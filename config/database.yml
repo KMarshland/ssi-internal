@@ -26,4 +26,5 @@ production:
   database: internal
   pool: 5
   username: ssi
+  host: localhost
   password: <%= ENV['DATABASE_PASSWORD'] %>
