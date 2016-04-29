@@ -17,6 +17,7 @@
 class User < ActiveRecord::Base
   before_save :downcase_email
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :groups
 
   validates :email, presence: true
 
