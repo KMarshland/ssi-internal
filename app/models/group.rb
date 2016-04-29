@@ -9,6 +9,7 @@
 #
 
 class Group < ActiveRecord::Base
+  validates :name, uniqueness: true, presence: true
 
   def to_s
     self.name

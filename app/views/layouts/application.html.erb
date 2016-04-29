@@ -34,6 +34,9 @@
               <% if is_super_admin? %>
                   <%= menu_item 'Users', users_path %>
               <% end %>
+              <% if is_admin? %>
+                  <%= menu_item 'Groups', groups_path %>
+              <% end %>
           <% else %>
               <%= menu_item 'Sign in', '/signin' %>
           <% end %>

@@ -24,6 +24,20 @@ class UsersController < ApplicationController
     render json: {success: true}
   end
 
+  def group
+    @user = User.find(params[:id])
+    @group = Group.where(name: params[:name]).first
+    if params[:val] == 'true'
+      @user.groups += [@group]
+    else
+      @user.groups -= [@group]
+    end
+    @user.groups.uniq!
+    @user.save!
+
+    render json: {success: true}
+  end
+
   def no_permissions
     respond_to do |format|
       format.html { render }

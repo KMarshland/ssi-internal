@@ -1,9 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+<h1><%= @group.name %></h1>
+
+<div class="panel">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>In group?</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @users.with_index do |user| %>
+        <tr data-user="<%= user.id %>">
+          <td><%= link_to user.name, user %></td>
+          <td><%= link_to user.email, user %></td>
+          <td>
+            <input name="<%= @group.name %>" class="permission" type="checkbox" <%= user.groups.include?(@group) ? 'checked' : '' %> >
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<script>
+  $(document).ready(function(){
+    $('.permission').on('change', function(){
+      var self = $(this);
+      var name = $(this).prop('name');
+      var checked = $(this).is(':checked');
+
+      $.ajax({
+        url: '/users/' + self.closest('tr').data('user') + '/group',
+        type: 'PUT',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        data: {
+          name: name,
+          val: checked
+        },
+        success: function(result) {
+          if (result.success) {
+          } else {
+            self.prop('checked', !checked);
+          }
+        },
+        error: function(result){
+          self.prop('checked', !checked);
+        }
+      });
+    });
+  });
+</script>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
