@@ -25,15 +25,21 @@ class UsersController < ApplicationController
   end
 
   def group
-    @user = User.find(params[:id])
-    @group = Group.where(name: params[:name]).first
-    if params[:val] == 'true'
-      @user.groups += [@group]
+    if params[:id] == 'all'
+      @users = User.all
     else
-      @user.groups -= [@group]
+      @users = User.where(id: params[:id])
     end
-    @user.groups.uniq!
-    @user.save!
+    @group = Group.where(name: params[:name]).first
+    @users.each do |user|
+      if params[:val] == 'true'
+        user.groups += [@group]
+      else
+        user.groups -= [@group]
+      end
+      user.groups.uniq!
+      user.save!
+    end
 
     render json: {success: true}
   end
@@ -43,9 +49,9 @@ class UsersController < ApplicationController
       format.html { render }
       format.json {
         render json: {
-                   success: false,
-                   errors: ["Sorry, but you don't have permission to do that"]
-               }
+            success: false,
+            errors: ["Sorry, but you don't have permission to do that"]
+        }
       }
     end
   end
@@ -111,13 +117,13 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email, :provider, :oauth_token, :oauth_expires_at)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email, :provider, :oauth_token, :oauth_expires_at)
+  end
 end

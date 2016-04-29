@@ -13,6 +13,13 @@
     </thead>
 
     <tbody>
+    <tr data-user="all">
+      <td>ALL</td>
+      <td></td>
+      <td>
+        <input name="<%= @group.name %>" class="permission" type="checkbox">
+      </td>
+    </tr>
     <% @users.with_index do |user| %>
         <tr data-user="<%= user.id %>">
           <td><%= link_to user.name, user %></td>
@@ -47,6 +54,9 @@
         },
         success: function(result) {
           if (result.success) {
+            if (self.closest('tr').data('user') == 'all'){
+              $('.permission').prop('checked', checked);
+            }
           } else {
             self.prop('checked', !checked);
           }
