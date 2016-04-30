@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :requires_super_admin, except: [:no_permissions, :current]
+  before_action :requires_super_admin, except: [:no_permissions, :current, :group]
+  before_action :requires_admin, except: [:no_permissions, :current]
 
   def current
     result = {
