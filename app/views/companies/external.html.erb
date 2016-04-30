@@ -1,2 +1,50 @@
 <h1>Welcome, <%= @company %>!</h1>
-<%= link_to 'Download resumes', "/companies/#{@company.id}/resumes" %>
+<%= link_to 'Download resumes', "/companies/#{@company.id}/resumes", class: 'download-resumes' %>
+
+<br />
+<br />
+<br />
+
+<script>
+  var embedders = {};
+</script>
+
+<div class="row resume-row">
+  <% 21.times do |i| %>
+      <% @company.resumes.each do |resume| %>
+          <div class="embedded-container col-md-4">
+            <div id="resume-<%= resume.id %>-<%= i %>" class="embedded"></div>
+            <div class="resume-owner">
+            <%= resume.user %>
+            </div>
+          </div>
+      <% end %>
+
+      <script>
+        <% @company.resumes.each do |resume| %>
+        embedders["resume-<%= resume.id %>-<%= i %>"] = "/<%= resume.uri %>";
+        <% end %>
+      </script>
+  <% end %>
+</div>
+
+<script>
+  $('.embedded').each(function () {
+    var el = $(this);
+    var handler = onVisibilityChange(el, function(isVisible) {
+      if (isVisible && !el.data('embedded')){
+        el.data('embedded', true);
+        var container = el.closest('.embedded-container');
+        container.hide();
+        container.find('.resume-owner').show();
+        PDFObject.embed(embedders[el[0].id], el);
+        container.fadeIn(1000);
+      }
+    }, {
+      preload: 350
+    });
+
+    //jQuery
+    $(window).on('DOMContentLoaded load resize scroll', handler);
+  });
+</script>

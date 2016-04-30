@@ -17,6 +17,10 @@ class Company < ActiveRecord::Base
     ResumeExport.from_users self.users
   end
 
+  def resumes
+    Resume.where(user_id: self.users.pluck(:id))
+  end
+
   def to_s
     self.name
   end
