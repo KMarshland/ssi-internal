@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @company.name %></h1>
+<%= link_to 'Public interface', "/#{@company.name}" %>
+<br />
+<br />
 
 <div class="panel">
   <table class="table table-bordered table-striped">

@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_action :requires_admin, except: [:resume_link, :external]
 
   def external
-
+    @hide_menu = true
   end
 
   def resume_link

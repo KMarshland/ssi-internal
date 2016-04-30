@@ -1,5 +1,5 @@
 <h1>Welcome, <%= @company %>!</h1>
-<%= link_to 'Download resumes', "/companies/#{@company.id}/resumes", class: 'download-resumes' %>
+<%= link_to 'Download all resumes', "/companies/#{@company.id}/resumes", class: 'download-resumes' %>
 
 <br />
 <br />
@@ -10,22 +10,20 @@
 </script>
 
 <div class="row resume-row">
-  <% 21.times do |i| %>
-      <% @company.resumes.each do |resume| %>
-          <div class="embedded-container col-md-4">
-            <div id="resume-<%= resume.id %>-<%= i %>" class="embedded"></div>
-            <div class="resume-owner">
-            <%= resume.user %>
-            </div>
-          </div>
-      <% end %>
-
-      <script>
-        <% @company.resumes.each do |resume| %>
-        embedders["resume-<%= resume.id %>-<%= i %>"] = "/<%= resume.uri %>";
-        <% end %>
-      </script>
+  <% @company.resumes.each do |resume| %>
+      <div class="embedded-container col-md-4">
+        <div id="resume-<%= resume.id %>" class="embedded"></div>
+        <div class="resume-owner">
+          <%= resume.user %>
+        </div>
+      </div>
   <% end %>
+
+  <script>
+    <% @company.resumes.each do |resume| %>
+    embedders["resume-<%= resume.id %>"] = "/<%= resume.uri %>";
+    <% end %>
+  </script>
 </div>
 
 <script>
@@ -45,6 +43,6 @@
     });
 
     //jQuery
-    $(window).on('DOMContentLoaded load resize scroll', handler);
+    $(window).on('DOMContentLoaded load resize scroll page:load', handler);
   });
 </script>

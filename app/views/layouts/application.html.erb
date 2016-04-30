@@ -27,19 +27,21 @@
     <div class="sitenav" style="display: block;">
       <div class="menu">
         <ul>
-          <%= menu_item 'Home', '/' %>
-          <%= menu_item 'Resumes', resumes_path %>
-          <% if is_logged_in? %>
-              <%= menu_item 'Sign out', '/signout' %>
-              <% if is_super_admin? %>
-                  <%= menu_item 'Users', users_path %>
+          <% unless @hide_menu %>
+              <%= menu_item 'Home', '/' %>
+              <%= menu_item 'Resumes', resumes_path %>
+              <% if is_logged_in? %>
+                  <%= menu_item 'Sign out', '/signout' %>
+                  <% if is_super_admin? %>
+                      <%= menu_item 'Users', users_path %>
+                  <% end %>
+                  <% if is_admin? %>
+                      <%= menu_item 'Groups', groups_path %>
+                      <%= menu_item 'Companies', companies_path %>
+                  <% end %>
+              <% else %>
+                  <%= menu_item 'Sign in', '/signin' %>
               <% end %>
-              <% if is_admin? %>
-                  <%= menu_item 'Groups', groups_path %>
-                  <%= menu_item 'Companies', companies_path %>
-              <% end %>
-          <% else %>
-              <%= menu_item 'Sign in', '/signin' %>
           <% end %>
         </ul>
       </div>
