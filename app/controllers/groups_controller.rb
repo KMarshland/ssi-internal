@@ -2,6 +2,26 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :requires_admin
 
+  def company
+    if params[:id] == 'all'
+      groups = Group.all
+    else
+      groups = Group.where(id: params[:id])
+    end
+    @company = Company.where(name: params[:name]).first
+    groups.each do |group|
+      if params[:val] == 'true'
+        group.companies += [@company]
+      else
+        group.companies -= [@company]
+      end
+      group.companies.uniq!
+      group.save!
+    end
+
+    render json: {success: true}
+  end
+
   # GET /groups
   # GET /groups.json
   def index

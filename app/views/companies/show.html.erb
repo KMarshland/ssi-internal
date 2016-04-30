@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @company.name %></h1>
+
+<div class="panel">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Resumes from group included in <%= @company.name %>?</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr data-group="all">
+      <td>ALL</td>
+      <td>
+        <input name="<%= @company.name %>" class="permission allbox" type="checkbox">
+      </td>
+    </tr>
+    <% @groups.with_index do |group| %>
+        <tr data-group="<%= group.id %>">
+          <td><%= link_to group, group %></td>
+          <td>
+            <input name="<%= @company.name %>" class="permission" type="checkbox" <%= group.companies.include?(@company) ? 'checked' : '' %> >
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<script>
+  $(document).ready(function(){
+    $('.permission').on('change', function(){
+      var self = $(this);
+      var name = $(this).prop('name');
+      var checked = $(this).is(':checked');
+
+      $.ajax({
+        url: '/groups/' + self.closest('tr').data('group') + '/company',
+        type: 'PUT',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        data: {
+          name: name,
+          val: checked
+        },
+        success: function(result) {
+          if (result.success) {
+            if (self.closest('tr').data('group') == 'all'){
+              $('.permission').prop('checked', checked);
+            }
+          } else {
+            self.prop('checked', !checked);
+          }
+        },
+        error: function(result){
+          self.prop('checked', !checked);
+        }
+      });
+    });
+
+    if ($('.permission:not(.allbox)').length == $('.permission:checked').length){
+      $('.allbox').prop('checked', true);
+    }
+  });
+</script>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

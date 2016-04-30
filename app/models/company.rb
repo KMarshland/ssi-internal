@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: groups
+# Table name: companies
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,13 +8,11 @@
 #  updated_at :datetime         not null
 #
 
-class Group < ActiveRecord::Base
+class Company < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
-  has_and_belongs_to_many :users
-  has_and_belongs_to_many :companies
+  has_and_belongs_to_many :groups
 
   def to_s
     self.name
   end
-
 end

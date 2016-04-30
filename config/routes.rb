@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  put 'groups/:id/company' => 'groups#company'
+  resources :companies
   resources :groups
 
   post 'resumes/upload'

@@ -36,6 +36,7 @@
               <% end %>
               <% if is_admin? %>
                   <%= menu_item 'Groups', groups_path %>
+                  <%= menu_item 'Companies', companies_path %>
               <% end %>
           <% else %>
               <%= menu_item 'Sign in', '/signin' %>
