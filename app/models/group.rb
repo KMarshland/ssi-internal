@@ -13,6 +13,10 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_and_belongs_to_many :companies
 
+  def resume_export
+    ResumeExport.from_users self.users
+  end
+
   def to_s
     self.name
   end

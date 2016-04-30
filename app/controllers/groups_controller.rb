@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :resume_link]
   before_action :requires_admin
+
+  def resume_link
+    redirect_to "/resume-book/#{@group.resume_export.link}"
+  end
 
   def company
     if params[:id] == 'all'

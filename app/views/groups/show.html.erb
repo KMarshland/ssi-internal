@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @group.name %></h1>
+<%= link_to 'Download all resumes in this group', "/groups/#{@group.id}/resumes", class: 'download-resumes' %>
+<br />
+<br />
 
 <div class="panel">
   <table class="table table-bordered table-striped">
