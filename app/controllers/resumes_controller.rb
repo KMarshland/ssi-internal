@@ -2,7 +2,14 @@ class ResumesController < ApplicationController
   protect_from_forgery
 
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
-  before_action :requires_logged_in, except: [:create]
+  before_action :requires_logged_in, except: [:create, :export]
+
+  def export
+    @resume_export = ResumeExport.where(link: params[:link]).first
+    return render json: {success: false, errors: ['Resume export not found']} if @resume_export.blank?
+
+    send_file @resume_export.uri, filename: 'SSI Resumebook.zip'
+  end
 
   def upload
     file = params[:file]

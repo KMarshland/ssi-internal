@@ -1,6 +1,14 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :requires_admin
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :resume_link, :external]
+  before_action :requires_admin, except: [:resume_link, :external]
+
+  def external
+
+  end
+
+  def resume_link
+    redirect_to "/resume-book/#{@company.resume_export.link}"
+  end
 
   # GET /companies
   # GET /companies.json
@@ -66,7 +74,8 @@ class CompaniesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      @company = Company.where(name: params[:name]).first if params[:name]
+      @company = Company.find(params[:id]) if params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

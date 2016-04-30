@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'companies/:id/resumes' => 'companies#resume_link'
+  get 'resume-book/:link' => 'resumes#export'
 
   put 'groups/:id/company' => 'groups#company'
   resources :companies
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :delete]
 
   resources :sessions, only: [:create, :destroy]
+
+  get ':name' => 'companies#external'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
