@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+gem 'rubyzip'
+
 gem 'omniauth-google-oauth2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

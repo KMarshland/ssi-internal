@@ -1,7 +1,12 @@
 #makes sure the upload directories exist
 require 'fileutils'
-path = Rails.root.join('public', 'uploads', 'internal', 'resumes', '_')
-dirname = File.dirname(path)
-unless File.directory?(dirname)
-  FileUtils.mkdir_p(dirname)
+paths = [
+    Rails.root.join('public', 'uploads', 'internal', 'resumes', '_'),
+    Rails.root.join('public', 'uploads', 'resume-exports', '_')
+]
+paths.each do |path|
+  dirname = File.dirname(path)
+  unless File.directory?(dirname)
+    FileUtils.mkdir_p(dirname)
+  end
 end
