@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Reimbursements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Team</th>
+      <th>Credit card</th>
+      <th>Value</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reimbursements.each do |reimbursement| %>
+      <tr>
+        <td><%= reimbursement.status %></td>
+        <td><%= reimbursement.team %></td>
+        <td><%= reimbursement.credit_card %></td>
+        <td><%= reimbursement.value %></td>
+        <td><%= reimbursement.description %></td>
+        <td><%= link_to 'Show', reimbursement %></td>
+        <td><%= link_to 'Edit', edit_reimbursement_path(reimbursement) %></td>
+        <td><%= link_to 'Destroy', reimbursement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reimbursement', new_reimbursement_path %>

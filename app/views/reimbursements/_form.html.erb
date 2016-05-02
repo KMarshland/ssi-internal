@@ -1,0 +1,37 @@
+<%= form_for(@reimbursement) do |f| %>
+  <% if @reimbursement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reimbursement.errors.count, "error") %> prohibited this reimbursement from being saved:</h2>
+
+      <ul>
+      <% @reimbursement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :team %><br>
+    <%= f.text_field :team %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_card %><br>
+    <%= f.check_box :credit_card %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

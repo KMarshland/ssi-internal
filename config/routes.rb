@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :reimbursements
+
   post 'upload' => 'file_uploads#upload'
 
   get 'groups/:id/resumes' => 'groups#resume_link'

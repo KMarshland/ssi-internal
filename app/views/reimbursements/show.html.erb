@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @reimbursement.status %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @reimbursement.team %>
+</p>
+
+<p>
+  <strong>Credit card:</strong>
+  <%= @reimbursement.credit_card %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @reimbursement.value %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @reimbursement.description %>
+</p>
+
+<%= link_to 'Edit', edit_reimbursement_path(@reimbursement) %> |
+<%= link_to 'Back', reimbursements_path %>
