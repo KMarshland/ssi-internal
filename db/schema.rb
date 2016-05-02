@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430040240) do
+ActiveRecord::Schema.define(version: 20160501235828) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20160430040240) do
   add_index "companies_groups", ["company_id", "group_id"], name: "index_companies_groups_on_company_id_and_group_id"
   add_index "companies_groups", ["company_id"], name: "index_companies_groups_on_company_id"
   add_index "companies_groups", ["group_id"], name: "index_companies_groups_on_group_id"
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "size"
+    t.string   "uri"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "file_uploads", ["name"], name: "index_file_uploads_on_name"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'upload' => 'file_uploads#upload'
+
   get 'groups/:id/resumes' => 'groups#resume_link'
   get 'companies/:id/resumes' => 'companies#resume_link'
   get 'resume-book/:link' => 'resumes#export'
