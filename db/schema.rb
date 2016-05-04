@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502001315) do
+ActiveRecord::Schema.define(version: 20160502005333) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 20160502001315) do
     t.integer  "size"
     t.string   "uri"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "reimbursement_id"
   end
 
   add_index "file_uploads", ["name"], name: "index_file_uploads_on_name"
+  add_index "file_uploads", ["reimbursement_id"], name: "index_file_uploads_on_reimbursement_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"

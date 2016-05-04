@@ -12,12 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
     <%= f.label :team %><br>
-    <%= f.text_field :team %>
+    <%= f.text_field :team, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :credit_card %><br>
@@ -25,13 +21,74 @@
   </div>
   <div class="field">
     <%= f.label :value %><br>
-    <%= f.text_field :value %>
+    <%= f.text_field :value, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
+    <div class="field">
+      <%= f.label :File %><br>
+      <input type="file" accept="application/pdf,application/image" name="receipt_file">
+      <div class="status">
+        Please upload a pdf or image of your receipt
+      </div>
+    </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', class: 'btn btn-large btn-danger' %>
   </div>
 <% end %>
+
+
+<script>
+  (function () {
+
+
+    var submitEl = $('[type="submit"]');
+    var uriEl = $('[name="resume[uri]"]');
+    submitEl.prop('disabled', !uriEl.val().trim());
+
+    $('[name="receipt_file"]').on('change', function () {
+      var file = this.files[0];
+      if (!file) return;
+
+      var titleEl = $('#resume_title');
+      if (titleEl.val().trim() == ''){
+        titleEl.val(file.name);
+      }
+
+      var formData = new FormData();
+      formData.append('file', file, file.name);
+
+      function displayStatus(text) {
+        $('.status').html(text);
+      }
+      var submitEl = $('[type="submit"]');
+
+      displayStatus('Uploading...');
+      submitEl.prop('disabled', true);
+
+      $.ajax({
+        url: '/upload',
+        type: 'POST',
+        beforeSend: fixCSRF,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (r) {
+          if (r.success){
+            console.log(r);
+            uriEl.attr('value', r.uri);
+            displayStatus('Upload successful');
+            submitEl.prop('disabled', false);
+          } else {
+            displayStatus('<ul>' + r.errors.join('</li><li>') + '</li></ul>')
+          }
+        },
+        error: function (a, b, textstatus) {
+          displayStatus(textstatus);
+        }
+      });
+    });
+  })();
+</script>
