@@ -27,3 +27,8 @@ lib/example_flights
 # Ignore application configuration
 /config/application.yml
 /public/uploads/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
