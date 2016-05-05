@@ -19,6 +19,8 @@ Gemfile.lock
 db/development.sqlite3
 db/*.sqlite3
 
+.ebextensions
+
 /tmp/cache
 /log
 lib/example_flights
